@@ -6,7 +6,7 @@ services:
     environment:
       - POSTGRES_USER=lol
       - POSTGRES_PASSWORD=lol
-      - POSTGRES_DB=mydb
+      - POSTGRES_DB=spotilyze
     ports:
       - "54320:5432"
     volumes:
