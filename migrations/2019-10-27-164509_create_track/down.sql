@@ -1,15 +1,18 @@
-DROP TABLE track;
-
-DROP TABLE external_url;
-
-DROP TABLE available_markets;
-
-DROP TABLE external_id;
-DROP TABLE linked_track;
-DROP TABLE restriction;
 
 
 
-DROP TABLE artist;
 
-DROP TABLE album;
+
+
+
+DROP TABLE IF EXISTS album_artists;
+
+
+DROP TABLE IF EXISTS album_genres;
+
+DROP TABLE IF EXISTS album_tracks;
+DROP TABLE IF EXISTS track;
+DROP TABLE IF EXISTS album;
+
+DROP TABLE IF EXISTS genre;
+DROP TABLE IF EXISTS artist;

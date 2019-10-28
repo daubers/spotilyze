@@ -1,9 +1,9 @@
 extern crate rspotify;
-
 use rspotify::spotify::client::Spotify;
 use rspotify::spotify::util::get_token;
 use rspotify::spotify::oauth2::{SpotifyClientCredentials, SpotifyOAuth};
 
+use super::db::*;
 
 pub fn main() {
     // Set client_id and client_secret in .env file or
@@ -19,7 +19,7 @@ pub fn main() {
     //     .build();
 
     let mut oauth = SpotifyOAuth::default()
-        .scope("user-read-recently-played")
+        .scope("user-read-currently-playing")
         .build();
     match get_token(&mut oauth) {
         Some(token_info) => {
@@ -30,12 +30,13 @@ pub fn main() {
             // let client_credential = SpotifyClientCredentials::default()
             //     .client_id("this-is-my-client-id")
             //     .client_secret("this-is-my-client-secret")
-            //     .build();
+            //     .build();w
             let spotify = Spotify::default()
                 .client_credentials_manager(client_credential)
                 .build();
-            let history = spotify.current_user_recently_played(10);
-            println!("{:?}", history);
+            let history = spotify.current_playing(None);
+            log_currently_playing(history.expect("Oops"));
+            //println!("{:?}", history);
         }
         None => println!("auth failed"),
     };
