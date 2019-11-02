@@ -26,17 +26,11 @@ pub fn main() {
             let client_credential = SpotifyClientCredentials::default()
                 .token_info(token_info)
                 .build();
-            // Or set client_id and client_secret explictly
-            // let client_credential = SpotifyClientCredentials::default()
-            //     .client_id("this-is-my-client-id")
-            //     .client_secret("this-is-my-client-secret")
-            //     .build();w
+
             let spotify = Spotify::default()
                 .client_credentials_manager(client_credential)
                 .build();
-            let history = spotify.current_playing(None);
-            log_currently_playing(history.expect("Oops"));
-            //println!("{:?}", history);
+            log_currently_playing(get_currently_playing(spotify));
         }
         None => println!("auth failed"),
     };
