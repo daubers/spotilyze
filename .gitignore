@@ -3,3 +3,5 @@
 .env
 .spotify_token_cache.json
 /postgres-data
+.vscode
+Localhost Session.sql
