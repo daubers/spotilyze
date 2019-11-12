@@ -10,3 +10,10 @@ edition = "2018"
 rspotify = "0.7.0"
 diesel = { version = "1.4.3", features = ["postgres"] }
 dotenv = "0.9.0"
+juniper = { version = "0.14.1", default-features = false}
+juniper_rocket = "0.5.1"
+rocket = "0.4.2"
+
+[dev-dependencies.juniper]
+version = "0.14.1"
+features = ["expose-test-schema", "serde_json"]
